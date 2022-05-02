@@ -1,0 +1,51 @@
+aside {
+  flex: 1;
+  padding: 0.4rem;
+
+  .mytip__title {
+    background-color: gold;
+    border-radius: 3px;
+    text-align: center;
+    height: 50px;
+    font-size: 1.4em;
+    font-weight: 600;
+    line-height: 50px;
+  }
+
+  .mytip__body {
+    background-color: #999;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .article {
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+    padding: 0.4rem;
+    margin: 5px;
+    align-items: center;
+
+    .article__img {
+      flex: none;
+      width: 60px;
+      height: 50px;
+      border: 2px solid black;
+    }
+
+    .article__title {
+      flex: 3;
+      margin-left: 20px;
+    }
+
+    .btn__remove {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+  }
+}
