@@ -14,10 +14,34 @@ aside {
 
   .mytip__body {
     background-color: #999;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .empty {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 0.4rem;
+    margin: 5px;
+    height: 180px;
+
+    .empty__title {
+      font-size: 1.5em;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .empty__desc {
+      text-align: center;
+      line-height: 1.4;
+      color: #999;
+    }
   }
 
   .article {
@@ -46,6 +70,12 @@ aside {
       margin: 0 10px;
       font-size: 1.7rem;
       cursor: pointer;
+
+      &:hover {
+        svg {
+          color: red;
+        }
+      }
     }
   }
 }

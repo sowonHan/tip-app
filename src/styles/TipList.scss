@@ -1,6 +1,6 @@
 main {
   flex: 2;
-  padding: 0.4rem;
+  padding: 0.4rem 0.4rem 0 0.4rem;
 
   .list__title {
     text-align: center;
@@ -20,6 +20,7 @@ main {
     border-radius: 4px;
     padding: 0.4rem;
     align-items: center;
+    margin-bottom: 10px;
 
     .content__image {
       flex: none;
@@ -37,6 +38,18 @@ main {
         font-weight: 700;
         margin-bottom: 5px;
       }
+
+      // 3줄 넘어가면 말줄임표로 생략하는 기능인데 지금은 개별 페이지가 없어서 안 쓰는 게 나을 듯
+      // .content__desc {
+      //   display: -webkit-box;
+      //   word-wrap: break-word;
+      //   -webkit-line-clamp: 3;
+      //   -webkit-box-orient: vertical;
+      //   overflow: hidden;
+      //   text-overflow: ellipsis;
+      //   line-height: 16px;
+      //   height: 48px;
+      // }
 
       .content__date {
         font-size: 0.8em;
@@ -61,15 +74,15 @@ main {
         flex: 1;
       }
 
+      &:hover {
+        svg {
+          color: gold;
+        }
+      }
+
       &.checked {
         svg {
-          // 아이콘
           color: #22b8df;
-        }
-
-        .text {
-          color: #adb5bd;
-          text-decoration: line-through;
         }
       }
     }

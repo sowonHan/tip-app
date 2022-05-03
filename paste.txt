@@ -1,0 +1,10 @@
+else {
+        return mytip.map((mine) => {
+          if (mine.id === id) {
+            return mytip;
+            // 동일한 아티클을 추가하지 못하게, onclick을 작동 안 되게 만들거나 클릭해도 mytip에 추가가 안 되게 해야하는 상황
+          } else {
+            return mine;
+          }
+        });
+      }

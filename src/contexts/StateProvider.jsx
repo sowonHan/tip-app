@@ -97,15 +97,38 @@ const StateProvider = ({ children }) => {
 
   const [mytip, setMytip] = useState([]);
 
-  const addToMyTip = useCallback((id) => {}, []);
+  const [tips, setTips] = useState(list);
+  const onToggle = useCallback((id) => {
+    setTips((tips) =>
+      tips.map((tip) =>
+        tip.id === id ? { ...tip, checked: !tip.checked } : tip
+      )
+    );
+  }, []);
 
-  const remove = useCallback((id) => {}, []);
+  const addToMyTip = useCallback((id) => {
+    setMytip((mytip) => {
+      const finded = mytip.find((mine) => mine.id === id);
+
+      if (finded === undefined) {
+        return [...mytip, { id }];
+      }
+    });
+  }, []);
+
+  const remove = useCallback((id) => {
+    setMytip((mytip) => {
+      return mytip.filter((mine) => mine.id !== id);
+    });
+  }, []);
 
   return (
     <StateContext.Provider
       value={{
         list,
         mytip,
+        tips,
+        onToggle,
         addToMyTip,
         remove,
       }}
