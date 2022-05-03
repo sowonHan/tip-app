@@ -31,7 +31,7 @@ function TipList() {
                   onToggle(id);
                 }}
               >
-                {checked ? console.log(checked) : <MdBookmarkAdd />}
+                {checked ? <MdBookmarkAdded /> : <MdBookmarkAdd />}
               </div>
             </div>
           );

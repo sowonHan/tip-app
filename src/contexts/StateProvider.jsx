@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import StateContext from "./StateContext";
 
 const StateProvider = ({ children }) => {
-  const [list] = useState([
+  const [list, setList] = useState([
     {
       id: 0,
       title: "먹다 남은 피자를 촉촉하게!",
@@ -97,11 +97,10 @@ const StateProvider = ({ children }) => {
 
   const [mytip, setMytip] = useState([]);
 
-  const [tips, setTips] = useState(list);
   const onToggle = useCallback((id) => {
-    setTips((tips) =>
-      tips.map((tip) =>
-        tip.id === id ? { ...tip, checked: !tip.checked } : tip
+    setList((list) =>
+      list.map((content) =>
+        content.id === id ? { ...content, checked: !content.checked } : content
       )
     );
   }, []);
@@ -111,7 +110,18 @@ const StateProvider = ({ children }) => {
       const finded = mytip.find((mine) => mine.id === id);
 
       if (finded === undefined) {
-        return [...mytip, { id }];
+        return [...mytip, { id, quantity: 1 }];
+      } else {
+        return mytip.map((mine) => {
+          if (mine.id === id) {
+            return {
+              id,
+              quantity: mine.quantity + 1,
+            };
+          } else {
+            return mine;
+          }
+        });
       }
     });
   }, []);
@@ -120,6 +130,12 @@ const StateProvider = ({ children }) => {
     setMytip((mytip) => {
       return mytip.filter((mine) => mine.id !== id);
     });
+
+    setList((list) =>
+      list.map((content) =>
+        content.id === id ? { ...content, checked: !content.checked } : content
+      )
+    );
   }, []);
 
   return (
@@ -127,7 +143,6 @@ const StateProvider = ({ children }) => {
       value={{
         list,
         mytip,
-        tips,
         onToggle,
         addToMyTip,
         remove,
