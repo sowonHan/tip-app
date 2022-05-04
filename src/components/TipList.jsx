@@ -7,7 +7,7 @@ import useList from "./../hooks/useList";
 
 function TipList() {
   const list = useList();
-  const { onToggle, addToMyTip } = useActions();
+  const { addToMyTip } = useActions();
 
   return (
     <main>
@@ -28,7 +28,6 @@ function TipList() {
                 className={classNames("btn__add", { checked })}
                 onClick={() => {
                   addToMyTip(id);
-                  onToggle(id);
                 }}
               >
                 {checked ? <MdBookmarkAdded /> : <MdBookmarkAdd />}

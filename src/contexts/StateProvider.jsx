@@ -97,14 +97,6 @@ const StateProvider = ({ children }) => {
 
   const [mytip, setMytip] = useState([]);
 
-  const onToggle = useCallback((id) => {
-    setList((list) =>
-      list.map((content) =>
-        content.id === id ? { ...content, checked: !content.checked } : content
-      )
-    );
-  }, []);
-
   const addToMyTip = useCallback((id) => {
     setMytip((mytip) => {
       const finded = mytip.find((mine) => mine.id === id);
@@ -124,6 +116,12 @@ const StateProvider = ({ children }) => {
         });
       }
     });
+
+    setList((list) =>
+      list.map((content) =>
+        content.id === id ? { ...content, checked: true } : content
+      )
+    );
   }, []);
 
   const remove = useCallback((id) => {
@@ -133,7 +131,7 @@ const StateProvider = ({ children }) => {
 
     setList((list) =>
       list.map((content) =>
-        content.id === id ? { ...content, checked: !content.checked } : content
+        content.id === id ? { ...content, checked: false } : content
       )
     );
   }, []);
@@ -143,7 +141,6 @@ const StateProvider = ({ children }) => {
       value={{
         list,
         mytip,
-        onToggle,
         addToMyTip,
         remove,
       }}
